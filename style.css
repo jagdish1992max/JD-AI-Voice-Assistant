@@ -1,64 +1,68 @@
-* {
-  box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  background: #080b16;
-  color: white;
-  font-family: Arial, sans-serif;
+*{box-sizing:border-box}
+body{
+margin:0;
+min-height:100vh;
+background:#080b16;
+color:white;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
 }
-
-.app {
-  width: 100%;
-  max-width: 440px;
-  margin: auto;
-  padding: 25px 20px;
-  text-align: center;
+.app{
+width:100%;
+max-width:440px;
+text-align:center;
 }
-
-h1 {
-  color: #65d9ff;
-  font-size: 32px;
-  text-shadow: 0 0 15px #168bff;
+h1{
+color:#65d9ff;
+font-size:34px;
+text-shadow:0 0 20px #168bff;
 }
-
-.orb {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  margin: 35px auto;
-  background: radial-gradient(
-    circle,
-    #36caff,
-    #1254b5,
-    #10182c
-  );
-  box-shadow: 0 0 45px #168bff88;
-  animation: pulse 2s infinite;
+.sub,.small{color:#8997ad}
+.orb{
+width:170px;
+height:170px;
+border-radius:50%;
+margin:35px auto;
+background:radial-gradient(circle,#36caff,#1254b5,#10182c);
+box-shadow:0 0 45px #168bff88;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
+cursor:pointer;
+animation:pulse 2s infinite;
 }
-
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 25px #168bff;
-  }
-  50% {
-    box-shadow: 0 0 65px #36caff;
-  }
+@keyframes pulse{
+0%,100%{box-shadow:0 0 25px #168bff}
+50%{box-shadow:0 0 65px #36caff}
 }
-
-.panel {
-  background: #121a2a;
-  padding: 20px;
-  border-radius: 18px;
-  border: 1px solid #263b59;
+.status,.panel{
+background:#121a2a;
+padding:18px;
+border-radius:18px;
+margin:18px 0;
 }
-
-button {
-  background: #168bff;
-  color: white;
-  border: none;
-  padding: 13px;
-  border-radius: 10px;
-  font-weight: bold;
+.status{color:#65d9ff}
+.panel{border:1px solid #263b59}
+input,select{
+width:100%;
+padding:13px;
+margin:9px 0;
+border-radius:10px;
+border:1px solid #35425a;
+background:#080f1d;
+color:white;
+}
+button{
+width:100%;
+background:#168bff;
+color:white;
+border:0;
+padding:14px;
+border-radius:10px;
+font-weight:bold;
 }
