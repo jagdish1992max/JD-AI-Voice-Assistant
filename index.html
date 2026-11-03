@@ -6,75 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080b16">
 <title>JD AI Voice Assistant</title>
-<style>
-*{box-sizing:border-box}
-body{
-margin:0;
-background:#080b16;
-color:white;
-font-family:Arial,sans-serif;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-.app{
-width:100%;
-max-width:440px;
-text-align:center;
-}
-h1{color:#65d9ff;font-size:30px}
-.sub{color:#9caac2}
-.orb{
-width:170px;height:170px;
-border-radius:50%;
-margin:35px auto;
-background:radial-gradient(circle,#36caff,#1254b5,#10182c);
-box-shadow:0 0 45px #168bff88;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:55px;
-cursor:pointer;
-}
-.orb:active{transform:scale(.95)}
-.status{
-background:#151e31;
-padding:16px;
-border-radius:14px;
-margin:20px 0;
-color:#65d9ff;
-}
-.panel{
-background:#121a2a;
-padding:20px;
-border-radius:18px;
-text-align:left;
-}
-input,select{
-width:100%;
-padding:13px;
-margin:9px 0;
-border-radius:10px;
-border:1px solid #35425a;
-background:#080f1d;
-color:white;
-}
-button{
-background:#168bff;
-color:white;
-border:0;
-padding:13px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
-}
-.panel button{width:100%}
-.small{font-size:12px;color:#8997ad}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="app">
 <h1>JD AI</h1>
 <p class="sub">YOUR PERSONAL VOICE ASSISTANT</p>
@@ -89,6 +24,7 @@ Assistant Ready
 
 <div class="panel">
 <h3>⚙️ Settings</h3>
+
 <input id="apikey" type="password"
 placeholder="Enter AI API Key">
 
@@ -98,58 +34,11 @@ placeholder="Enter AI API Key">
 </select>
 
 <button id="save">SAVE SETTINGS</button>
+
 <p class="small">JD AI Assistant • Android Edition</p>
 </div>
 </div>
 
-<script>
-const mic=document.getElementById("mic");
-const status=document.getElementById("status");
-const message=document.getElementById("message");
-
-document.getElementById("save").onclick=()=>{
-localStorage.setItem("jd_language",
-document.getElementById("language").value);
-localStorage.setItem("jd_key",
-document.getElementById("apikey").value);
-status.innerText="Settings Saved";
-};
-
-mic.onclick=()=>{
-const SpeechRecognition=
-window.SpeechRecognition||
-window.webkitSpeechRecognition;
-
-if(!SpeechRecognition){
-status.innerText="Voice recognition not supported";
-return;
-}
-
-const recognition=new SpeechRecognition();
-recognition.lang=
-document.getElementById("language").value;
-recognition.interimResults=false;
-
-status.innerText="Listening...";
-message.innerText="SUN RAHA HOON";
-
-recognition.onresult=(event)=>{
-const text=event.results[0][0].transcript;
-status.innerText="You said: "+text;
-message.innerText="VOICE RECEIVED";
-};
-
-recognition.onerror=()=>{
-status.innerText="Microphone error";
-message.innerText="TRY AGAIN";
-};
-
-recognition.onend=()=>{
-message.innerText="TAP TO START";
-};
-
-recognition.start();
-};
-</script>
+<script src="script.js"></script>
 </body>
 </html>
