@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #080b16;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #65d9ff;
+  font-size: 32px;
+  text-shadow: 0 0 15px #168bff;
+}
+
+.orb {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  margin: 35px auto;
+  background: radial-gradient(
+    circle,
+    #36caff,
+    #1254b5,
+    #10182c
+  );
+  box-shadow: 0 0 45px #168bff88;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 25px #168bff;
+  }
+  50% {
+    box-shadow: 0 0 65px #36caff;
+  }
+}
+
+.panel {
+  background: #121a2a;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid #263b59;
+}
+
+button {
+  background: #168bff;
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 10px;
+  font-weight: bold;
+}
