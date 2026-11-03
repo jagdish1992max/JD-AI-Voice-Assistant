@@ -1,6 +1,6 @@
 
 const WORKER_URL =
-  "https://jd-ai-voice-assistant.jagdishjd6.workers.dev/";
+  "https://jd-ai-voice-assistant.jagdishjd6.workers.dev/api";
 
 const mic = document.getElementById("mic");
 const status = document.getElementById("status");
@@ -31,14 +31,23 @@ async function askGemini(text) {
     })
   });
 
-  const data = await response.json();
+  const raw = await response.text();
+  let data = null;
+  try {
+    data = JSON.parse(raw);
+  } catch (e) {
+    throw new Error(
+      "Server ne JSON nahi diya (status " + response.status + "): " +
+      raw.slice(0, 80)
+    );
+  }
 
   if (!response.ok) {
-    throw new Error(data.error || "Gemini request failed");
+    throw new Error(data.error || "Request failed (" + response.status + ")");
   }
 
   if (!data.reply) {
-    throw new Error("Gemini returned an empty reply");
+    throw new Error("Empty reply");
   }
 
   return data.reply;
